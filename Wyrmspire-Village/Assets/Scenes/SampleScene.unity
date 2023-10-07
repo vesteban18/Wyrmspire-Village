@@ -749,9 +749,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 0
-  startHour: 1
+  startHour: 0
   timeText: {fileID: 749656220}
   dayText: {fileID: 1171236993}
+  day: 0
 --- !u!4 &1682035446
 Transform:
   m_ObjectHideFlags: 0

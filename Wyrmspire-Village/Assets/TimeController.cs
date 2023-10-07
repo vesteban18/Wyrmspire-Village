@@ -22,11 +22,19 @@ public class TimeController : MonoBehaviour
 
     public DateTime dayTime;
     private bool flag;
+    public int day;
+
+    public int Day
+        {
+            get { return day; }
+            set { day = value; }
+        }
 
     // Start is called before the first frame update
     void Start()
     {
         currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
+        day = 0;
     }
 
     // Update is called once per frame
@@ -47,6 +55,7 @@ public class TimeController : MonoBehaviour
                 if (flag == false)
                 {
                     dayTime = dayTime.AddDays(1);
+                    day++;
                     dayText.text = dayTime.ToString("dd");
                     flag = true;
                 }
