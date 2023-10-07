@@ -1731,6 +1731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dc2cc032140a343850f12a72a14400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeMultiplier: 0
+  startHour: 0
+  timeText: {fileID: 0}
+  dayText: {fileID: 0}
+  day: 0
 --- !u!4 &1682035446
 Transform:
   m_ObjectHideFlags: 0
@@ -2631,17 +2636,33 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 7.0688777, y: -8.894469, z: 0}
-      leftTangent: {x: 0.0030679703, y: 0.00228405, z: 0}
-      rightTangent: {x: -0.19092464, y: -0.14220524, z: 0}
+    - position: {x: 7.0688753, y: -8.894469, z: 0}
+      leftTangent: {x: 0.003068924, y: 0.00228405, z: 0}
+      rightTangent: {x: -0.051308155, y: -0.038214684, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 6.6584253, y: -9.78237, z: 0}
+      leftTangent: {x: -0.26079988, y: 0.20001602, z: 0}
+      rightTangent: {x: 0.2671523, y: -0.20487213, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 7.9700027, y: -9.896975, z: 0}
+      leftTangent: {x: 0.10305929, y: 0.1530981, z: 0}
+      rightTangent: {x: -0.17071581, y: -0.25361443, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
     - position: {x: 6.061794, y: -10.093552, z: 0}
-      leftTangent: {x: 0.35084486, y: -0.011297226, z: 0}
-      rightTangent: {x: -1.3927441, y: 0.044848442, z: 0}
+      leftTangent: {x: 0.15998077, y: -0.005150795, z: 0}
+      rightTangent: {x: -1.392745, y: 0.044848442, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
