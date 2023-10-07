@@ -14,6 +14,8 @@ public class Villager : MonoBehaviour
     private bool pregnantFlag = false;
     private Vector3 targetPosition;
     private int localDay;
+    private float timeSinceDirectionChange;
+    private float changeDirectionInterval;
     // Start is called before the first frame update
 
 /*
@@ -43,6 +45,8 @@ public class Villager : MonoBehaviour
         pregnant = false;
         eatFlag = false;
         pregnantFlag = false;
+        timeSinceDirectionChange = 0.0f;
+        changeDirectionInterval = 0.5f;
 
         targetPosition = transform.position;
         localDay = -1;
@@ -51,13 +55,15 @@ public class Villager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        timeSinceDirectionChange += Time.deltaTime;
+        if (timeSinceDirectionChange >= changeDirectionInterval)
         {
-            float randomX = Random.Range(-10f, 10f);
-            float randomZ = Random.Range(-10f, 10f);
-            targetPosition = new Vector3(randomX, transform.position.y, randomZ);
+            float randomX = Random.Range(-500.0f, 500.0f);
+            float randomY = Random.Range(-500.0f, 500.0f);
+            targetPosition = new Vector2(randomX, randomY);
+            timeSinceDirectionChange = 0.0f;
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         // Daily events
     if (localDay != timeController.Day)
