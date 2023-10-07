@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Villager : MonoBehaviour
 {
-    Random random = new Random();
-
-    private static bool sex;
+    private TimeController timeController;
+    private static bool isFemale;
     private float hunger;
     private float happiness;
-    private float moveSpeed = 1.0f;
+    private float moveSpeed = 30.0f;
     private bool pregnant;
     private bool eatFlag = false;
     private bool pregnantFlag = false;
@@ -17,6 +16,7 @@ public class Villager : MonoBehaviour
     private int localDay;
     // Start is called before the first frame update
 
+/*
     public Villager(bool sex, Vector3 targetPosition)
     {
         this.sex = sex;
@@ -28,14 +28,16 @@ public class Villager : MonoBehaviour
         this.pregnantFlag = false;
         this.targetPosition = targetPosition;
     }
+*/
 
     void Start()
     {
-        if((int)random.Next(0, 2) == 0)
-            sex = male;
+        timeController = FindObjectOfType<TimeController>();
+        if((int)Random.Range(0, 2) == 0)
+            isFemale = false;
         else
-            sex = female;
-
+            isFemale = true;
+    
         hunger = 100;
         happiness = 100;
         pregnant = false;
@@ -43,6 +45,7 @@ public class Villager : MonoBehaviour
         pregnantFlag = false;
 
         targetPosition = transform.position;
+        localDay = -1;
     }
 
     // Update is called once per frame
@@ -52,31 +55,29 @@ public class Villager : MonoBehaviour
         {
             float randomX = Random.Range(-10f, 10f);
             float randomZ = Random.Range(-10f, 10f);
-            targetPosition = new vector3(randomX, transform.position.y, randomZ);
+            targetPosition = new Vector3(randomX, transform.position.y, randomZ);
         }
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-    }
 
-    // Daily events
-    if (localDay != TimeController.day)
+        // Daily events
+    if (localDay != timeController.Day)
     {
-        localDay = TimeControl.day;
+        localDay = timeController.Day;
         if (hunger < 100 && eatFlag == false)
         {
             // TODO inverse proportion between eat chance and hunger
-            if (hunger < (int)random.Next(0, 100))
+            if (hunger < (int)Random.Range(0, 100))
             {
                 hunger+=25;
                 eatFlag = true;
             }
         }
-        if ()
 
-        if (pregnant == false && sex == female && pregnantFlag == false)
+        if (pregnant == false && isFemale == true && pregnantFlag == false)
         {
-            if((int)random.Next(0, 4) == 0)
+            if((int)Random.Range(0, 4) == 0)
             {
-                if (happiness > (int)random.Next(0, 100))
+                if (happiness > (int)Random.Range(0, 100))
                 {
                     pregnant = true;
                 }
@@ -88,6 +89,6 @@ public class Villager : MonoBehaviour
             pregnantFlag = false;
         }
     }
-    
     eatFlag = false;
+    }
 }
