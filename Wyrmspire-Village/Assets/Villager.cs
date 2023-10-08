@@ -57,7 +57,7 @@ public class Villager : MonoBehaviour
         eatFlag = false;
         pregnantFlag = false;
         timeSinceDirectionChange = 0.0f;
-        changeDirectionInterval = 0.5f;
+        changeDirectionInterval = 1.5f;
 
         // Initilize the target position
         targetPosition = transform.position;
@@ -105,6 +105,10 @@ public class Villager : MonoBehaviour
                 eatFlag = true;
                 crops.amount--;
             }
+            // if (hunger <= 0)
+            // {
+            //     villager.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            // }
 
             if (!pregnant && isFemale && !pregnantFlag)
             {
@@ -122,7 +126,7 @@ public class Villager : MonoBehaviour
                 pregnantFlag = false;
             }
         }
-    eatFlag = false;
+        eatFlag = false;
     }
 
     public bool IsReadyForReproduction()
@@ -139,7 +143,6 @@ public class Villager : MonoBehaviour
     {
         if (IsReadyForReproduction())
         {
-            Debug.LogError("Prego.");
             Vector2 spawnPosition = new Vector2(transform.position.x + 2, transform.position.y);
             CreateChildVillager(spawnPosition);
 
@@ -155,13 +158,11 @@ public class Villager : MonoBehaviour
 
         if((int)Random.Range(0, 2) == 0)
         {
-            Debug.LogError("Male.");
             newVillager.isFemale = false;
             newVillager.GetComponent<SpriteRenderer>().sprite = male_villager;   
         }
         else
         {
-            Debug.LogError("Female.");
             newVillager.isFemale = true;
             newVillager.GetComponent<SpriteRenderer>().sprite = female_villager;
         }
@@ -181,15 +182,6 @@ public class Villager : MonoBehaviour
         else{
             Debug.LogError("VillagerManager not found in the scene.");
         }
-    eatFlag = false;
-    hunger-=15;
-    //if (hunger <= 0)
-    // {
-    //     if (this.isFemale == false)
-    //     Destroy(copyOfVillager1);
-    //     else
-    //     Destroy(copyOfVillager2);
-    // }
     }
 
     Vector2 GetPositionWithoutObstacle()
