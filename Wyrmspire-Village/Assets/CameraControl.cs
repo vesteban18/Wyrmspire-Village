@@ -28,14 +28,14 @@ public class CameraControl : MonoBehaviour
         
         if(Input.GetKey(KeyCode.DownArrow))
         {
-            if (cameraPosition > -220.0)
+            if (cameraPosition > -270.0)
             {
             transform.Translate(new Vector3(0,-speed * Time.deltaTime,0));
             }
         }
         if(Input.GetKey(KeyCode.UpArrow))
         {
-            if (cameraPosition < 220.0)
+            if (cameraPosition < 270.0)
             {
             transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
             }

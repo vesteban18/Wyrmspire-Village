@@ -5,14 +5,14 @@ using UnityEngine;
 public class Villager : MonoBehaviour
 {
     private TimeController timeController;
-    private static bool isFemale;
+    private bool isFemale;
     private float hunger;
     private float happiness;
     private float moveSpeed = 30.0f;
     private bool pregnant;
     private bool eatFlag = false;
     private bool pregnantFlag = false;
-    private Vector3 targetPosition;
+    private Vector2 targetPosition;
     private int localDay;
     private float timeSinceDirectionChange;
     private float changeDirectionInterval;
@@ -35,11 +35,7 @@ public class Villager : MonoBehaviour
     void Start()
     {
         timeController = FindObjectOfType<TimeController>();
-        if((int)Random.Range(0, 2) == 0)
-            isFemale = false;
-        else
-            isFemale = true;
-    
+        isFemale = Random.Range(0, 2) == 0;
         hunger = 100;
         happiness = 100;
         pregnant = false;
@@ -48,6 +44,7 @@ public class Villager : MonoBehaviour
         timeSinceDirectionChange = 0.0f;
         changeDirectionInterval = 0.5f;
 
+        // Initilize the target position
         targetPosition = transform.position;
         localDay = -1;
     }
@@ -66,35 +63,81 @@ public class Villager : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         // Daily events
-    if (localDay != timeController.Day)
-    {
-        localDay = timeController.Day;
-        if (hunger < 100 && eatFlag == false)
+        if (localDay != timeController.Day)
         {
-            // TODO inverse proportion between eat chance and hunger
-            if (hunger < (int)Random.Range(0, 100))
+            localDay = timeController.Day;
+            if (hunger < 100 && !eatFlag)
             {
-                hunger+=25;
-                eatFlag = true;
-            }
-        }
-
-        if (pregnant == false && isFemale == true && pregnantFlag == false)
-        {
-            if((int)Random.Range(0, 4) == 0)
-            {
-                if (happiness > (int)Random.Range(0, 100))
+                // TODO inverse proportion between eat chance and hunger
+                if (hunger < (int)Random.Range(0, 100))
                 {
-                    pregnant = true;
+                    hunger+=25;
+                    eatFlag = true;
                 }
             }
-            pregnantFlag = true;
+
+            if (!pregnant && isFemale && !pregnantFlag)
+            {
+                if((int)Random.Range(0, 4) == 0)
+                {
+                    if (happiness > Random.Range(0, 100))
+                    {
+                        TryReproduce();
+                    }
+                }
+                pregnantFlag = true;
+            }
+            if (!pregnant)
+            {
+                pregnantFlag = false;
+            }
         }
-        if (pregnant == false)
+    eatFlag = false;
+    }
+
+    public bool IsReadyForReproduction()
+    {
+        if (!isFemale || pregnant)
         {
-            pregnantFlag = false;
+            return false;
+        }
+        
+        return true;
+    }
+
+    private void TryReproduce()
+    {
+        if (IsReadyForReproduction())
+        {
+            Debug.LogError("Prego.");
+            Vector2 spawnPosition = new Vector2(transform.position.x + 2, transform.position.y);
+            CreateChildVillager(spawnPosition);
+
+            // Optionally, reset pregnancy status and other conditions
+            pregnant = true;
         }
     }
-    eatFlag = false;
+
+    private void CreateChildVillager(Vector2 spawnPosition)
+    {
+        GameObject newVillagerObject = Instantiate(gameObject, spawnPosition, Quaternion.identity);
+        Villager newVillager = newVillagerObject.GetComponent<Villager>();
+
+        newVillager.isFemale = Random.Range(0, 2) == 0; // Randomize gender
+
+        // Set other properties for the child Villager, such as age, health, etc.
+        newVillager.hunger = 75;
+        newVillager.happiness = 75;
+
+        // Add the child Villager to your game's management system (e.g., VillagerManager).
+        VillagerManager manager = FindObjectOfType<VillagerManager>();
+
+        if(manager != null)
+        {
+            manager.CreateVillager();
+        }
+        else{
+            Debug.LogError("VillagerManager not found in the scene.");
+        }
     }
 }
