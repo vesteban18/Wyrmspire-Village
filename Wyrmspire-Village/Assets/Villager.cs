@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Villager : MonoBehaviour
 {
+    public Sprite male_villager;
+    public Sprite female_villager;
     private TimeController timeController;
     private bool isFemale;
     private float hunger;
@@ -123,7 +125,19 @@ public class Villager : MonoBehaviour
         GameObject newVillagerObject = Instantiate(gameObject, spawnPosition, Quaternion.identity);
         Villager newVillager = newVillagerObject.GetComponent<Villager>();
 
-        newVillager.isFemale = Random.Range(0, 2) == 0; // Randomize gender
+        if((int)Random.Range(0, 2) == 0)
+        {
+            Debug.LogError("Male.");
+            newVillager.isFemale = false;
+            newVillager.GetComponent<SpriteRenderer>().sprite = male_villager;   
+        }
+        else
+        {
+            Debug.LogError("Female.");
+            newVillager.isFemale = true;
+            newVillager.GetComponent<SpriteRenderer>().sprite = female_villager;
+        }
+        // newVillager.isFemale = Random.Range(0, 2) == 0; // Randomize gender
 
         // Set other properties for the child Villager, such as age, health, etc.
         newVillager.hunger = 75;

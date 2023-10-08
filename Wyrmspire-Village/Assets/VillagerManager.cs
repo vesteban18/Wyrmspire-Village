@@ -11,7 +11,7 @@ public class VillagerManager : MonoBehaviour
     public void CreateVillager()
     {
         GameObject newVillagerObject = Instantiate(villagerPrefab, spawnPoint.position, Quaternion.identity);
-        // You may want to customize the new Villager's properties here
+        // You may want to customize the new Villager's properties here       
         villagers.Add(newVillagerObject);
     }
 
