@@ -7,6 +7,7 @@ public class Villager : MonoBehaviour
     public Sprite male_villager;
     public Sprite female_villager;
     private TimeController timeController;
+    private VillagerManager villagerManager;
     private Crops crops;
     private bool isFemale;
     private float hunger;
@@ -43,13 +44,13 @@ public class Villager : MonoBehaviour
     void Start()
     {
         timeController = FindObjectOfType<TimeController>();
-
+        villagerManager = FindObjectOfType<VillagerManager>();
         crops = FindObjectOfType<Crops>();
+
         if((int)Random.Range(0, 2) == 0)
             isFemale = false;
         else
             isFemale = true;
-    
 
         hunger = 100;
         happiness = 100;
@@ -99,15 +100,22 @@ public class Villager : MonoBehaviour
         if (localDay != timeController.Day)
         {
             localDay = timeController.Day;
-            if (hunger < 100 && !eatFlag)
+            if (hunger < 100 && !eatFlag && crops.amount > 0)
             {
                 hunger+=25;
                 eatFlag = true;
                 crops.amount--;
             }
-            // if (hunger <= 0)
+
+            // Villager death
+            // foreach (GameObject villager in villagerManager.villagers)
             // {
-            //     villager.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            //     Villager villagerScript = villager.GetComponent<Villager>();
+            //     if (villagerScript.hunger == 0.0f)
+            //     {
+            //         DestroyVillager(villager);
+            //         Debug.LogError("A villager died!");
+            //     }
             // }
 
             if (!pregnant && isFemale && !pregnantFlag)
@@ -226,5 +234,9 @@ public class Villager : MonoBehaviour
             }
         }
         return targetPosition;
+    }
+    public void DestroyVillager(GameObject villager)
+    {
+        Destroy(villager);
     }
 }

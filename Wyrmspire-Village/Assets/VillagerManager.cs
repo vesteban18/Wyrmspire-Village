@@ -6,7 +6,7 @@ public class VillagerManager : MonoBehaviour
     public GameObject villagerPrefab; // The prefab of your Villager
     public Transform spawnPoint; // The spawn point for new Villagers
 
-    private List<GameObject> villagers = new List<GameObject>();
+    public List<GameObject> villagers = new List<GameObject>();
 
     public void CreateVillager()
     {
