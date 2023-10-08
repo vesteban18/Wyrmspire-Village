@@ -6,7 +6,8 @@ public class ChangeWeatherWindy : MonoBehaviour
 {
     public GameObject windyButton;
     public GameObject cloud;
-    // Start is called before the first frame update
+    public GameObject wind;
+    public GameObject rain;    // Start is called before the first frame update
     void Start()
     {
         
@@ -20,7 +21,9 @@ public class ChangeWeatherWindy : MonoBehaviour
 
     public void changeWindy()
     {
-        windyButton.GetComponent<SpriteRenderer>().color = new Color(0.6509804f, 0.5607843f, 0.5607843f);
-        cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.25f);
+        windyButton.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+        cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f);
+        wind.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.25f);
+        rain.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f);
     }
 }
