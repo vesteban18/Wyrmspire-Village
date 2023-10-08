@@ -5,6 +5,7 @@ using UnityEngine;
 public class Villager : MonoBehaviour
 {
     private TimeController timeController;
+    private Crops crops;
     private bool isFemale;
     private float hunger;
     private float happiness;
@@ -40,6 +41,7 @@ public class Villager : MonoBehaviour
     void Start()
     {
         timeController = FindObjectOfType<TimeController>();
+        crops = FindObjectOfType<Crops>();
         if((int)Random.Range(0, 2) == 0)
             isFemale = false;
         else
@@ -98,6 +100,7 @@ public class Villager : MonoBehaviour
             {
                 hunger+=25;
                 eatFlag = true;
+                crops.amount--;
             }
         }
 
@@ -118,6 +121,14 @@ public class Villager : MonoBehaviour
         }
     }
     eatFlag = false;
+    hunger-=15;
+    if (hunger <= 0)
+    // {
+    //     if (this.isFemale == false)
+    //     Destroy(copyOfVillager1);
+    //     else
+    //     Destroy(copyOfVillager2);
+    // }
     }
 
     Vector2 GetPositionWithoutObstacle()
