@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Crops : MonoBehaviour
 {
-    public int amount = 0;
+    private int localAmount = 50;
     private TimeController timeController;
     private Weather weather;
     private int localDay = 0;
+
+    public int amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
 
     // Start is called before the first frame update
     void Start()
@@ -28,19 +34,11 @@ public class Crops : MonoBehaviour
             // Increase food amount
             if (weather.raining == true)
             {
-                amount += 30;
+                localAmount += 30;
             }
             else
-                amount +=20;
+                localAmount += 20;
         }
         localDay = timeController.day;
-
-        //if ()// Villager attempts to take food
-
-        if (amount > 0)
-        {
-            amount-=1;
-        }
-        // Else villager gets no food
     }
 }
