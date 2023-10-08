@@ -7,6 +7,7 @@ public class Villager : MonoBehaviour
     public Sprite male_villager;
     public Sprite female_villager;
     private TimeController timeController;
+    private Crops crops;
     private bool isFemale;
     private float hunger;
     private float happiness;
@@ -18,6 +19,11 @@ public class Villager : MonoBehaviour
     private int localDay;
     private float timeSinceDirectionChange;
     private float changeDirectionInterval;
+    private float maxX = 500;
+    private float minX = -500;
+    private float maxY = 500;
+    private float minY = -500;
+
     // Start is called before the first frame update
 
 /*
@@ -37,7 +43,14 @@ public class Villager : MonoBehaviour
     void Start()
     {
         timeController = FindObjectOfType<TimeController>();
-        isFemale = Random.Range(0, 2) == 0;
+
+        crops = FindObjectOfType<Crops>();
+        if((int)Random.Range(0, 2) == 0)
+            isFemale = false;
+        else
+            isFemale = true;
+    
+
         hunger = 100;
         happiness = 100;
         pregnant = false;
@@ -54,15 +67,33 @@ public class Villager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Villager is out of range
+        if (transform.position.x > maxX || transform.position.x < minX || transform.position.y > maxY || transform.position.y < minY)
+        {
+            transform.position = new Vector2(0, 0);
+        }
         timeSinceDirectionChange += Time.deltaTime;
         if (timeSinceDirectionChange >= changeDirectionInterval)
         {
-            float randomX = Random.Range(-500.0f, 500.0f);
-            float randomY = Random.Range(-500.0f, 500.0f);
-            targetPosition = new Vector2(randomX, randomY);
+            //Vector2 newTargetPosition = GetPositionWithoutObstacle();
+            targetPosition = GetPositionWithoutObstacle();
+            //targetPosition = new Vector2(newTargetPosition.x, newTargetPosition.y);
             timeSinceDirectionChange = 0.0f;
         }
+
+        Vector2 moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, 1.0f);
+
+        if (hit.collider != null)
+        {
+            Vector2 newRandomDirection = Random.insideUnitCircle.normalized;
+            targetPosition = new Vector2(transform.position.x + newRandomDirection.x, transform.position.y + newRandomDirection.y);
+        }
+
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+
 
         // Daily events
         if (localDay != timeController.Day)
@@ -70,12 +101,9 @@ public class Villager : MonoBehaviour
             localDay = timeController.Day;
             if (hunger < 100 && !eatFlag)
             {
-                // TODO inverse proportion between eat chance and hunger
-                if (hunger < (int)Random.Range(0, 100))
-                {
-                    hunger+=25;
-                    eatFlag = true;
-                }
+                hunger+=25;
+                eatFlag = true;
+                crops.amount--;
             }
 
             if (!pregnant && isFemale && !pregnantFlag)
@@ -153,5 +181,58 @@ public class Villager : MonoBehaviour
         else{
             Debug.LogError("VillagerManager not found in the scene.");
         }
+    eatFlag = false;
+    hunger-=15;
+    if (hunger <= 0)
+    // {
+    //     if (this.isFemale == false)
+    //     Destroy(copyOfVillager1);
+    //     else
+    //     Destroy(copyOfVillager2);
+    // }
+    }
+
+    Vector2 GetPositionWithoutObstacle()
+    {
+        Vector2 randomPosition = Vector2.zero;
+        bool obstacleDetected = true;
+        int maxAttempts = 10;
+        int attempts = 0;
+
+        while(obstacleDetected && attempts < maxAttempts)
+        {
+            attempts++;
+
+            float randomX = Random.Range(-750.0f, 750.0f);
+            float randomY = Random.Range(-750.0f, 750.0f);
+
+            targetPosition = new Vector2(randomX, randomY);
+
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(randomPosition, 10.0f);
+
+            bool obstacleFound = false;
+
+            foreach (Collider2D collider in hitColliders)
+            {
+                if (collider.gameObject.CompareTag("Grid"))
+                {
+                    obstacleFound = true;
+                    break;
+                }
+            }
+
+            if (!obstacleFound)
+            {
+                obstacleDetected = false;
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(targetPosition, Vector2.zero, 1.0f);
+
+            if (hit.collider == null)
+            {
+                obstacleDetected = false;
+            }
+        }
+        return targetPosition;
     }
 }
