@@ -183,7 +183,7 @@ public class Villager : MonoBehaviour
         }
     eatFlag = false;
     hunger-=15;
-    if (hunger <= 0)
+    //if (hunger <= 0)
     // {
     //     if (this.isFemale == false)
     //     Destroy(copyOfVillager1);
