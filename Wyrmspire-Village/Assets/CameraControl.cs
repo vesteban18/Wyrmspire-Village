@@ -35,7 +35,7 @@ public class CameraControl : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.UpArrow))
         {
-            if (cameraPosition < 270.0)
+            if (cameraPosition < 100.0)
             {
             transform.Translate(new Vector3(0,speed * Time.deltaTime,0));
             }

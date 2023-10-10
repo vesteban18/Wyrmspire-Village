@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 13882291}
+  villagers: []
 --- !u!114 &13882289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 61931234}
+  villagers: []
 --- !u!114 &61931232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,11 +635,11 @@ RectTransform:
   - {fileID: 1309543063}
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433, y: 230}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12, y: -11}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &212596552
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,8 +718,8 @@ Transform:
   m_GameObject: {fileID: 212596552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -525, y: -256.5, z: -1}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalPosition: {x: -958.7413, y: -636.9849, z: -1}
+  m_LocalScale: {x: 163.659, y: 164.322, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2075043297}
@@ -820,7 +822,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -874,11 +876,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 424.3, y: 231.2}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.6999512, y: 0.2000122}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &316662492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 331458993}
+  villagers: []
 --- !u!114 &331458991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,6 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 388721064}
+  villagers: []
 --- !u!114 &388721062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,11 +1400,11 @@ RectTransform:
   - {fileID: 1618802769}
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433.7, y: 138.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 11.299988, y: -102.3}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &401040473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,8 +1580,8 @@ Transform:
   m_GameObject: {fileID: 412191774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -525, y: -256.5, z: 1}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: -959, y: -639, z: 1}
+  m_LocalScale: {x: 85, y: 85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2075043297}
@@ -1655,11 +1659,11 @@ RectTransform:
   - {fileID: 921540605}
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433.3, y: 199.2}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 11.700012, y: -41.800003}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &436508844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1832,8 +1836,8 @@ Transform:
   m_GameObject: {fileID: 474668500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -525, y: -256.5, z: -1}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalPosition: {x: -961.6195, y: -638.3805, z: -1}
+  m_LocalScale: {x: 163.33168, y: 163.32683, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2075043297}
@@ -1884,6 +1888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 492832876}
+  villagers: []
 --- !u!114 &492832874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,11 +2341,11 @@ RectTransform:
   - {fileID: 1353073996}
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -432.9, y: 168.9}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12.099976, y: -72.100006}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &835999728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,7 +2632,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -2875,7 +2880,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -3021,11 +3026,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2075043297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 420.2, y: 181.9}
-  m_SizeDelta: {x: 200, y: 63.7389}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.800049, y: -42.23056}
+  m_SizeDelta: {x: 200, y: 63.73889}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1171236993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3201,8 +3206,8 @@ Transform:
   m_GameObject: {fileID: 1218119236}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -525, y: -256.5, z: -1}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalPosition: {x: -959.6196, y: -642.0151, z: -1}
+  m_LocalScale: {x: 163.319, y: 164.322, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2075043297}
@@ -3350,6 +3355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 1291439217}
+  villagers: []
 --- !u!114 &1291439215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,6 +3641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 1382791342}
+  villagers: []
 --- !u!114 &1382791340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3836,6 +3843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 1445417557}
+  villagers: []
 --- !u!114 &1445417560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5083,7 +5091,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -5174,7 +5182,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5311,6 +5319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 2012681859}
+  villagers: []
 --- !u!114 &2012681857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5691,6 +5700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerPrefab: {fileID: 0}
   spawnPoint: {fileID: 2127156487}
+  villagers: []
 --- !u!114 &2127156490
 MonoBehaviour:
   m_ObjectHideFlags: 0
